@@ -1,6 +1,8 @@
 <template>
-  <div >
-    <div class="row">
+  <div class="wrapper">
+    <div>第{{n}}手</div>
+    <div class="chess">
+ <div class="row">
       <Cell @click="onClickCell(0,$event)" :n="n"/>
       <Cell @click="onClickCell(1,$event)" :n="n"/>
       <Cell @click="onClickCell(2,$event)" :n="n"/>
@@ -15,8 +17,11 @@
       <Cell @click="onClickCell(7,$event)" :n="n"/>
       <Cell @click="onClickCell(8,$event)" :n="n"/>
     </div>
-<div>{{map}}</div>
-<div>{{result}}</div>
+    </div>
+   <div>
+     结果：{{result === null ? "胜负未分" : `胜方为${result}`}}
+   </div>
+
   </div>
 </template>
 
@@ -32,7 +37,7 @@ export default {
         [null,null,null],
         [null,null,null],
       ],
-      result:false
+      result:null
     }
   },
   methods:{
@@ -66,8 +71,14 @@ export default {
 </script>
 
 <style>
-
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .row{
   display:flex;
+
 }
 </style>
